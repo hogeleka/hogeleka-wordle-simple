@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/hogeleka-wordle-mvp/static/css/main.17baf03e.css",
+    "main.js": "/hogeleka-wordle-mvp/static/js/main.bb07e857.js",
+    "static/js/787.462807cb.chunk.js": "/hogeleka-wordle-mvp/static/js/787.462807cb.chunk.js",
+    "index.html": "/hogeleka-wordle-mvp/index.html",
+    "main.17baf03e.css.map": "/hogeleka-wordle-mvp/static/css/main.17baf03e.css.map",
+    "main.bb07e857.js.map": "/hogeleka-wordle-mvp/static/js/main.bb07e857.js.map",
+    "787.462807cb.chunk.js.map": "/hogeleka-wordle-mvp/static/js/787.462807cb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.17baf03e.css",
+    "static/js/main.bb07e857.js"
+  ]
+}
