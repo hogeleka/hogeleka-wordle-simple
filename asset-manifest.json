@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/hogeleka-wordle-mvp/static/css/main.17baf03e.css",
-    "main.js": "/hogeleka-wordle-mvp/static/js/main.bb07e857.js",
-    "static/js/787.462807cb.chunk.js": "/hogeleka-wordle-mvp/static/js/787.462807cb.chunk.js",
-    "index.html": "/hogeleka-wordle-mvp/index.html",
-    "main.17baf03e.css.map": "/hogeleka-wordle-mvp/static/css/main.17baf03e.css.map",
-    "main.bb07e857.js.map": "/hogeleka-wordle-mvp/static/js/main.bb07e857.js.map",
-    "787.462807cb.chunk.js.map": "/hogeleka-wordle-mvp/static/js/787.462807cb.chunk.js.map"
+    "main.css": "/hogeleka-wordle-simple/static/css/main.17baf03e.css",
+    "main.js": "/hogeleka-wordle-simple/static/js/main.cf8e28cd.js",
+    "static/js/787.462807cb.chunk.js": "/hogeleka-wordle-simple/static/js/787.462807cb.chunk.js",
+    "index.html": "/hogeleka-wordle-simple/index.html",
+    "main.17baf03e.css.map": "/hogeleka-wordle-simple/static/css/main.17baf03e.css.map",
+    "main.cf8e28cd.js.map": "/hogeleka-wordle-simple/static/js/main.cf8e28cd.js.map",
+    "787.462807cb.chunk.js.map": "/hogeleka-wordle-simple/static/js/787.462807cb.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.17baf03e.css",
-    "static/js/main.bb07e857.js"
+    "static/js/main.cf8e28cd.js"
   ]
 }
