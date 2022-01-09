@@ -1,7 +1,7 @@
 import { FunctionComponent, useState, useEffect } from "react";
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
-import { BlockColor, RowStatus } from "./utilsAndConstants";
+import { BlockColor, RowStatus, USE_UPPER_CASE } from "./utilsAndConstants";
 
 
 interface GuessRow {
@@ -111,7 +111,7 @@ const GuessRow: FunctionComponent<GuessRow> = (props: GuessRow) => {
                                     maxHeight: 30,
                                     fontWeight:  'bold',
                                     color: 'black',
-                                    textTransform: 'lowercase',
+                                    textTransform: USE_UPPER_CASE ? 'uppercase' : 'lowercase',
                                     backgroundColor: getBlockColorClass(rowColors[index])
                                 }
                             }

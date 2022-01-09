@@ -3,40 +3,41 @@ import { FunctionComponent, useState, useEffect } from "react";
 import { AVAILABLE_WORDS } from "./dictionary";
 import Guesses from "./guesses";
 import KeyboardWrapper from './KeyboardWrapper';
-import { ALLOWED_KEYS, BACKSPACE_KEY, ENTER_KEY, GameState, PERMITTED_CHARS } from "./utilsAndConstants";
+import { TOTAL_GUESSES, NUM_LETTERS, BACKSPACE_KEY, ENTER_KEY, GameState, PERMITTED_CHARS, USE_UPPER_CASE } from "./utilsAndConstants";
 import SummaryModal from "./gameSummary";
 
 interface GameScreenProps {
 }
 
-
 const onlyEnglishChars = (word: string): boolean => {
-    const invalidChars = word.split('').filter(c => !PERMITTED_CHARS.includes(c))
+    const invalidChars = word.split('').filter(c => !PERMITTED_CHARS.includes(c.toLowerCase()))
     return invalidChars.length === 0;
 }
 
-
-const getWord = (numLettersInWord: number): string => {
+const getWord = (numLettersInWord: number, useUpperCase: boolean): string => {
     let charCount: number = 5
     if (numLettersInWord > 3 && numLettersInWord < 8) {
         charCount = numLettersInWord
     }
     const nLetterWords = AVAILABLE_WORDS.filter(word => word.length === numLettersInWord && onlyEnglishChars(word))
     
-    return nLetterWords[Math.floor(Math.random() * nLetterWords.length)];
+    const word = nLetterWords[Math.floor(Math.random() * nLetterWords.length)]
+    return useUpperCase ? word.toUpperCase() : word.toLowerCase()
 }
 
 const GameScreen: FunctionComponent<GameScreenProps> = (props: GameScreenProps) => {
+    const useUpperCase  = USE_UPPER_CASE; 
+    const totalGuesses = TOTAL_GUESSES;
+    const numberOfLetters = NUM_LETTERS;
 
-    const totalGuesses = 6;
-    const numberOfLetters = 5;
-    const [correctWord, setCorrectWord] = useState<string>(getWord(numberOfLetters))
+    const [correctWord, setCorrectWord] = useState<string>(getWord(numberOfLetters, useUpperCase))
     const [guesses, setGuesses] = useState<string[]>([]);
     const [invalidLetters, setInvalidLetters] = useState<Set<string>>(new Set())
     const [currentActiveRow, setCurrentActiveRow] = useState<number>(0)
     const [currentInput, setCurrentInput] = useState<string>("");
     const [gameState, setGameState] = useState<GameState>(GameState.ONGOING);
     const [showSummaryModal, setShowSummaryModal] = useState<boolean>(false);
+    
 
     useEffect(() => {
         if (guesses.length > 0) {
@@ -58,7 +59,10 @@ const GameScreen: FunctionComponent<GameScreenProps> = (props: GameScreenProps) 
 
     
     const handleKeyPress = (button: string): void => {
-        if (ALLOWED_KEYS.has(button) && gameState === GameState.ONGOING) {
+        let allowedKeys = [ENTER_KEY, BACKSPACE_KEY];
+        allowedKeys = allowedKeys.concat(PERMITTED_CHARS.map(c => useUpperCase ? c.toUpperCase() : c.toLowerCase()))
+        const setOfUniquePermittedKeys: Set<string> = new Set(allowedKeys)
+        if (setOfUniquePermittedKeys.has(button) && gameState === GameState.ONGOING) {
             if (button === BACKSPACE_KEY) {
                 if (currentInput.length > 0) {
                     setCurrentInput(currentInput.slice(0,-1))
@@ -85,7 +89,7 @@ const GameScreen: FunctionComponent<GameScreenProps> = (props: GameScreenProps) 
     setCurrentActiveRow(0)
     setCurrentInput("")
     setGameState(GameState.ONGOING)
-    setCorrectWord(getWord(numberOfLetters))
+    setCorrectWord(getWord(numberOfLetters, useUpperCase))
     setShowSummaryModal(false);
     setInvalidLetters(new Set())
    }

@@ -50,14 +50,14 @@ const SummaryModal: FunctionComponent<GameSummaryScreen> = (props: GameSummarySc
       >
         <Fade in={showModal}>
           <Box sx={style}>
-            <Typography id="transition-modal-title" variant="h6" component="h2">
+            <Typography style={{textAlign: "center"}} id="transition-modal-title" variant="h6" component="h2">
               {endText}
             </Typography>
-            <Typography id="transition-modal-description" sx={{ mt: 2 }}>
+            <Typography style={{textAlign: "center"}} id="transition-modal-description" sx={{ mt: 2 }}>
             {`You used ${usedGuesses} out of ${allowedGuesses} attempts`}
             </Typography>
-            <Typography>{`The correct answer is ${correctWord}`}</Typography>
-            <Button onClick={()=>{handleClose()}}>Close</Button>
+            <Typography style={{textAlign: "center"}}>{`The correct answer is ${correctWord}`}</Typography>
+            <div style={{textAlign: "center"}}><Button  onClick={()=>{handleClose()}}>Close</Button></div>
           </Box>
         </Fade>
       </Modal>
